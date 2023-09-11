@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+    {% if user.is_authenticated %}
+    <h1>Аккаунт: {{ user.username }}</h1>
+    <h1>баланс: {{ user_account.balance  }}$</h1>
+    <a href="{% url 'recharge_balance' %}">Пополнить баланс</a>
+    <h1>cделано ставок: {{ user_account.bet_counter  }}</h1>
+    <h1>победных ставок: {{ user_account.bet_wins  }}</h1>
+    <title>Создать новую ставку</title>
+</head>
+<body>
+    <h1>Создать новую ставку</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Создать ставку">
+    </form>
+    <h2>История ставок:</h2>
+    <ul>
+      {% for bet in bets %}
+        <li>Ставка на {{ bet.game }}: ${{ bet.amount }}</li>
+      {% endfor %}
+       <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+    <button type="submit">Выход</button>
+  </form>
+    </ul>
+    {% endif %}
+</body>
+</html>
+</body>
+</html>

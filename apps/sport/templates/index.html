@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for g in game %}
+    <h1>{{ g.one_command }} VS {{ g.two_command }}</h1>
+    <h2>Начало игры в : {{ g.time_start }}</h2>
+    {% endfor %}
+</body>
+</html>
